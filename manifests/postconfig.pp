@@ -43,10 +43,10 @@ class nexus::postconfig (
       'delete_user_deployment':
         command => '/usr/bin/curl -s -f -X DELETE -u admin:admin123 http://localhost:8081/nexus/service/local/users/deployment',
         onlyif => '/usr/bin/curl -s -f -X GET -u admin:admin123 http://localhost:8081/nexus/service/local/users/deployment';
-    } 
+    }
     exec {"wait for nexus":
       require => Service["nexus"],
-      command => "/usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate https://localhost:8081/nexus/",
+      command => "/usr/bin/wget --spider --tries 15 --retry-connrefused --no-check-certificate http://localhost:8081/nexus/",
     }
   }
 }
