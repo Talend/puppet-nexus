@@ -46,7 +46,15 @@ class nexus (
   $nexus_context         = $nexus::params::nexus_context,
   $nexus_manage_user     = $nexus::params::nexus_manage_user,
   $download_folder       = $nexus::params::download_folder,
+  $java_initmemory      = $nexus::params::java_initmemory,
+  $java_maxmemory       = $nexus::params::java_maxmemory,
+  $install_java         = $nexus::paramst::install_java,
+  $admin_password_crypt = $nexus::params::admin_password_crypt,
+  $enable_anonymous     = $nexus::params::enable_anonymous,
+  $initialize_passwords = $nexus::params::initialize_passwords,
+
 ) inherits nexus::params {
+
   include stdlib
 
   # Bail if $version is not set.  Hopefully we can one day use 'latest'.
@@ -127,9 +135,14 @@ class nexus (
     version    => $version,
   }
 
+  class { 'nexus::postconfig':
+    enable_postconf => true,
+  }
+
   Anchor['nexus::begin'] ->
     Class['nexus::package'] ->
     Class['nexus::config'] ->
     Class['nexus::service'] ->
+    Class['nexus::postconfig'] ->
   Anchor['nexus::end']
 }
