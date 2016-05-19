@@ -39,7 +39,7 @@ class nexus::config(
   $nexus_properties_file = "${nexus_root}/${nexus_home_dir}/conf/nexus.properties"
 
   # Add systemd suport
-  if $::lsbmajdistrelease == '7' {
+  if $::operatingsystemmajrelease == '7' {
     file{'/usr/lib/systemd/system/nexus.service':
       ensure  => 'present',
       content => template('nexus/nexus.service.erb')
