@@ -36,6 +36,10 @@ class nexus::postconfig (
 ){
   if $enable_postconf {
 
+    exec {"wait for nexus":
+      require => Service["nexus"],
+      command => "/usr/bin/wget --spider --tries 15 --retry-connrefused --no-check-certificate http://localhost:8081/nexus/",
+    } ->
     exec {
       'disable_anonymous':
         command => "/usr/bin/curl -X PUT -u admin:admin123 http://localhost:8081/nexus/service/local/users/anonymous -H 'Content-type: application/json' -d '{\"data\":{\"userId\":\"anonymous\",\"firstName\":\"Nexus\",\"lastName\":\"Anonymous User\",\"email\":\"changeme2@yourcompany.com\",\"status\":\"disabled\",\"roles\":[\"anonymous\",\"repository-any-read\"]}}'",
@@ -44,9 +48,6 @@ class nexus::postconfig (
         command => '/usr/bin/curl -s -f -X DELETE -u admin:admin123 http://localhost:8081/nexus/service/local/users/deployment',
         onlyif => '/usr/bin/curl -s -f -X GET -u admin:admin123 http://localhost:8081/nexus/service/local/users/deployment';
     }
-    exec {"wait for nexus":
-      require => Service["nexus"],
-      command => "/usr/bin/wget --spider --tries 15 --retry-connrefused --no-check-certificate http://localhost:8081/nexus/",
-    }
+
   }
 }
