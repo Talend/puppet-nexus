@@ -31,7 +31,7 @@
 #
 class nexus::postconfig (
 
-  $enable_postconf = true
+  $enable_postconf = true,
 
 ){
   if $enable_postconf {

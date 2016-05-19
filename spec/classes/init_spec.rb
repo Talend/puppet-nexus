@@ -43,6 +43,8 @@ describe 'nexus' do
       'Class[nexus::package]' ).that_notifies('Class[nexus::service]') }
     it { should contain_class('nexus::service').that_subscribes_to(
       'Class[nexus::config]' ) }
+    it { should contain_class('nexus::postconfig').that_requires(
+        'Class[nexus::service]' ) }
     it { should contain_anchor('nexus::end').that_requires(
       'Class[nexus::service]' ) }
 

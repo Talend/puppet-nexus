@@ -19,26 +19,27 @@
 # Copyright 2013 Hubspot
 #
 class nexus::config(
+
   $nexus_root = $::nexus::nexus_root,
   $nexus_home_dir = $::nexus::nexus_home_dir,
   $nexus_host = $::nexus::nexus_host,
   $nexus_port = $::nexus::nexus_port,
   $nexus_context = $::nexus::nexus_context,
   $nexus_work_dir = $::nexus::nexus_work_dir,
+  $java_initmemory      = $nexus::java_initmemory,
+  $java_maxmemory       = $nexus::java_maxmemory,
+  $install_java         = $nexus::install_java,
+  $admin_password_crypt = $nexus::admin_password_crypt,
+  $enable_anonymous     = $nexus::enable_anonymous,
+  $initialize_passwords = $nexus::initialize_passwords,
 
-  $java_initmemory      = 128,
-  $java_maxmemory       = 256,
-  $install_java         = true,
-  $admin_password_crypt = '$shiro1$SHA-512$1024$G+rxqm4Qw5/J54twR6BrSQ==$2ZUS4aBHbGGZkNzLugcQqhea7uPOXhoY4kugop4r4oSAYlJTyJ9RyZYLuFBmNzDr16Ii1Q+O6Mn1QpyBA1QphA==',
-  $enable_anonymous     = false,
-  $initialize_passwords = true,
 
 ) {
 
   $nexus_properties_file = "${nexus_root}/${nexus_home_dir}/conf/nexus.properties"
 
   # Add systemd suport
-  if $::lsbmajdistrelease == "7" {
+  if $::lsbmajdistrelease == '7' {
     file{'/usr/lib/systemd/system/nexus.service':
       ensure  => 'present',
       content => template('nexus/nexus.service.erb')

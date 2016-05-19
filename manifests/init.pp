@@ -48,7 +48,7 @@ class nexus (
   $download_folder       = $nexus::params::download_folder,
   $java_initmemory      = $nexus::params::java_initmemory,
   $java_maxmemory       = $nexus::params::java_maxmemory,
-  $install_java         = $nexus::paramst::install_java,
+  $install_java         = $nexus::params::install_java,
   $admin_password_crypt = $nexus::params::admin_password_crypt,
   $enable_anonymous     = $nexus::params::enable_anonymous,
   $initialize_passwords = $nexus::params::initialize_passwords,
