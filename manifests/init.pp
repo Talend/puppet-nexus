@@ -57,6 +57,8 @@ class nexus (
 
   include stdlib
 
+  ensure_packages(['wget'])
+
   # Bail if $version is not set.  Hopefully we can one day use 'latest'.
   if ($version == 'latest') or ($version == undef) {
     fail('Cannot set version nexus version to "latest" or leave undefined.')

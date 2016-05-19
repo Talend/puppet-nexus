@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'puppetlabs_spec_helper/module_spec_helper'
 
-describe 'nexus::params', :type => :class do
+describe 'nexus::params' do
 
   context 'with default params' do
     it { should contain_class('nexus::params') }

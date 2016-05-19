@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'puppetlabs_spec_helper/module_spec_helper'
 
-describe 'nexus::package', :type => :class do
+describe 'nexus::package' do
   let(:params) {
     {
       'deploy_pro'            => false,

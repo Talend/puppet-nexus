@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'puppetlabs_spec_helper/module_spec_helper'
 
-describe 'nexus::service', :type => :class do
+describe 'nexus::service'  do
   let(:params) {
     {
       'nexus_home' => '/srv/nexus',

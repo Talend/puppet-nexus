@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'puppetlabs_spec_helper/module_spec_helper'
 
-describe 'nexus::config', :type => :class do
+describe 'nexus::config' do
   let(:params) {
     {
       'nexus_root'     => '/foo',

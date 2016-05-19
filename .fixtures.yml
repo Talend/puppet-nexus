@@ -2,5 +2,6 @@ fixtures:
   forge_modules:
     stdlib: 'puppetlabs/stdlib'
     wget: 'maestrodev/wget'
+    inifile: 'puppetlabs/inifile'
   symlinks:
     nexus: "#{source_dir}"

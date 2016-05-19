@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'puppetlabs_spec_helper/module_spec_helper'
 
-describe 'nexus', :type => :class do
+describe 'nexus' do
   let(:params) {
     {
       'version' => '2.11.2'
@@ -17,6 +17,8 @@ describe 'nexus', :type => :class do
   end
 
   context 'with a version set' do
+    it { should compile }
+
     it { should contain_class('nexus') }
     it { should contain_class('nexus::params') }
 
