@@ -1,5 +1,9 @@
 require 'beaker-rspec'
 
+# Load shared acceptance examples
+base_spec_dir = Pathname.new(File.join(File.dirname(__FILE__), 'acceptance'))
+Dir[base_spec_dir.join('shared/**/*.rb')].sort.each{ |f| require f }
+
 # Install Puppet
 unless ENV['RS_PROVISION'] == 'no'
   # This will install the latest available package on el and deb based
