@@ -36,9 +36,9 @@ class nexus::postconfig (
 ){
   if $enable_postconf {
 
-    exec {"wait for nexus":
-      require => Service["nexus"],
-      command => "/usr/bin/wget --spider --tries 15 --retry-connrefused --no-check-certificate http://localhost:8081/nexus/",
+    exec {'wait for nexus':
+      require => Service['nexus'],
+      command => '/usr/bin/wget --spider --tries 15 --retry-connrefused --no-check-certificate http://localhost:8081/nexus/',
     } ->
     exec {
       'disable_anonymous':
