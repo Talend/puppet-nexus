@@ -31,6 +31,7 @@ RSpec.configure do |c|
       shell('puppet module install puppetlabs-stdlib', { :acceptable_exit_codes => [0,1] })
       shell('puppet module install puppetlabs-java', { :acceptable_exit_codes => [0,1] })
       shell('puppet module install maestrodev-wget', { :acceptable_exit_codes => [0,1] })
+      shell('puppet module install puppetlabs-inifile', { :acceptable_exit_codes => [0,1] })
     end
   end
 end
