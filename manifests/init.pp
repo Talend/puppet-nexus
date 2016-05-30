@@ -137,14 +137,23 @@ class nexus (
     version    => $version,
   }
 
+  class { 'nexus::started':
+    nexus_host => $nexus_host,
+    nexus_port => $nexus_port
+  }
+
   class { 'nexus::postconfig':
-    enable_postconf => true,
+    nexus_root           => $nexus_root,
+    admin_password_crypt => $admin_password_crypt,
+    enable_anonymous     => $enable_anonymous,
+    initialize_passwords => $initialize_passwords
   }
 
   Anchor['nexus::begin'] ->
     Class['nexus::package'] ->
     Class['nexus::config'] ->
     Class['nexus::service'] ->
+    Class['nexus::started'] ->
     Class['nexus::postconfig'] ->
   Anchor['nexus::end']
 }
