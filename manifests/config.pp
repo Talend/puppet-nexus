@@ -20,18 +20,18 @@
 #
 class nexus::config(
 
-  $nexus_root = $::nexus::nexus_root,
-  $nexus_home_dir = $::nexus::nexus_home_dir,
-  $nexus_host = $::nexus::nexus_host,
-  $nexus_port = $::nexus::nexus_port,
-  $nexus_context = $::nexus::nexus_context,
-  $nexus_work_dir = $::nexus::nexus_work_dir,
-  $java_initmemory      = $nexus::java_initmemory,
-  $java_maxmemory       = $nexus::java_maxmemory,
-  $install_java         = $nexus::install_java,
-  $admin_password_crypt = $nexus::admin_password_crypt,
-  $enable_anonymous     = $nexus::enable_anonymous,
-  $initialize_passwords = $nexus::initialize_passwords,
+  $nexus_root              = $::nexus::nexus_root,
+  $nexus_home_dir          = $::nexus::nexus_home_dir,
+  $nexus_host              = $::nexus::nexus_host,
+  $nexus_port              = $::nexus::nexus_port,
+  $nexus_context           = $::nexus::nexus_context,
+  $nexus_work_dir          = $::nexus::nexus_work_dir,
+  $java_initmemory         = $::nexus::java_initmemory,
+  $java_maxmemory          = $::nexus::java_maxmemory,
+  $install_java            = $::nexus::install_java,
+  $admin_password_crypt    = $::nexus::admin_password_crypt,
+  $enable_anonymous_access = $::nexus::enable_anonymous_access,
+  $initialize_passwords    = $::nexus::initialize_passwords,
 
 
 ) {

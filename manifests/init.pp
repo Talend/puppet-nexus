@@ -46,12 +46,12 @@ class nexus (
   $nexus_context         = $nexus::params::nexus_context,
   $nexus_manage_user     = $nexus::params::nexus_manage_user,
   $download_folder       = $nexus::params::download_folder,
-  $java_initmemory      = $nexus::params::java_initmemory,
-  $java_maxmemory       = $nexus::params::java_maxmemory,
-  $install_java         = $nexus::params::install_java,
-  $admin_password_crypt = $nexus::params::admin_password_crypt,
-  $enable_anonymous     = $nexus::params::enable_anonymous,
-  $initialize_passwords = $nexus::params::initialize_passwords,
+  $java_initmemory         = $nexus::params::java_initmemory,
+  $java_maxmemory          = $nexus::params::java_maxmemory,
+  $install_java            = $nexus::params::install_java,
+  $admin_password_crypt    = $nexus::params::admin_password_crypt,
+  $enable_anonymous_access = $nexus::params::enable_anonymous_access,
+  $initialize_passwords    = $nexus::params::initialize_passwords,
 
 ) inherits nexus::params {
 
@@ -143,10 +143,10 @@ class nexus (
   }
 
   class { 'nexus::postconfig':
-    nexus_root           => $nexus_root,
-    admin_password_crypt => $admin_password_crypt,
-    enable_anonymous     => $enable_anonymous,
-    initialize_passwords => $initialize_passwords
+    nexus_root              => $nexus_root,
+    admin_password_crypt    => $admin_password_crypt,
+    enable_anonymous_access => $enable_anonymous_access,
+    initialize_passwords    => $initialize_passwords
   }
 
   Anchor['nexus::begin'] ->

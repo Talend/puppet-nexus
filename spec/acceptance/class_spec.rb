@@ -9,11 +9,19 @@ describe 'nexus' do
     "
     it_should_behave_like 'nexus::running'
 
-    describe file('/srv/sonatype-work/nexus/conf/security-configuration.xml') do
-      it { should be_file }
-      its(:content) { should include '<anonymousAccessEnabled>false</anonymousAccessEnabled>' }
-      its(:content) { should include '<realm>XmlAuthenticatingRealm</realm>' }
-      its(:content) { should include '<realm>XmlAuthorizingRealm</realm>' }
+    describe 'xml realms should be enabled' do
+      describe file('/srv/sonatype-work/nexus/conf/security-configuration.xml') do
+        it { should be_file }
+        its(:content) { should include '<realm>XmlAuthenticatingRealm</realm>' }
+        its(:content) { should include '<realm>XmlAuthorizingRealm</realm>' }
+      end
+    end
+
+    describe 'anonymous access should be disabled' do
+      describe file('/srv/sonatype-work/nexus/conf/security-configuration.xml') do
+        it { should be_file }
+        its(:content) { should include '<anonymousAccessEnabled>false</anonymousAccessEnabled>' }
+      end
     end
 
     describe 'nexus user deployment should be removed' do

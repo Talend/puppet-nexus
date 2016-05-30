@@ -13,17 +13,17 @@
 #    * https://support.sonatype.com/hc/en-us/articles/213465508-How-can-I-reset-a-forgotten-admin-password-
 #    * http://shiro.apache.org/command-line-hasher.html
 #
-# [*enable_anonymous*]
+# [*enable_anonymous_access*]
 #
 # [*initialize_passwords*]
 #
 # === Examples
 #
 # class { 'nexus::postconfig':
-#   nexus_root           => '/opt',
-#   admin_password_crypt => '$shiro1$SHA-512$1024$G+rxqm4Qw5/J54twR6BrSQ==$2ZUS4aBHbGGZkNzLugcQqhea7uPOXhoY4kugop4r4oSAYlJTyJ9RyZYLuFBmNzDr16Ii1Q+O6Mn1QpyBA1QphA==',
-#   enable_anonymous     => false,
-#   initialize_passwords => true
+#   nexus_root              => '/opt',
+#   admin_password_crypt    => '$shiro1$SHA-512$1024$G+rxqm4Qw5/J54twR6BrSQ==$2ZUS4aBHbGGZkNzLugcQqhea7uPOXhoY4kugop4r4oSAYlJTyJ9RyZYLuFBmNzDr16Ii1Q+O6Mn1QpyBA1QphA==',
+#   enable_anonymous_access => false,
+#   initialize_passwords    => true
 # }
 #
 # === Authors
@@ -36,16 +36,16 @@
 #
 class nexus::postconfig(
 
-  $nexus_root           = $nexus::nexus_root,
-  $admin_password_crypt = $nexus::admin_password_crypt,
-  $enable_anonymous     = $nexus::enable_anonymous,
-  $initialize_passwords = $nexus::initialize_passwords,
+  $nexus_root              = $nexus::nexus_root,
+  $admin_password_crypt    = $nexus::admin_password_crypt,
+  $enable_anonymous_access = $nexus::enable_anonymous_access,
+  $initialize_passwords    = $nexus::initialize_passwords,
 
 ) {
 
   validate_string($nexus_root)
   validate_string($admin_password_crypt)
-  validate_bool($enable_anonymous)
+  validate_bool($enable_anonymous_access)
   validate_bool($initialize_passwords)
 
   $security_configuration_file = "${nexus_root}/sonatype-work/nexus/conf/security-configuration.xml"
@@ -61,7 +61,7 @@ class nexus::postconfig(
       'set realms/realm[last()+1]/#text XmlAuthenticatingRealm',
       # update anonymous access
       'clear anonymousAccessEnabled',
-      "set anonymousAccessEnabled/#text ${enable_anonymous}"
+      "set anonymousAccessEnabled/#text ${enable_anonymous_access}"
     ]
   }
 
