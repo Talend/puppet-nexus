@@ -57,11 +57,11 @@ describe 'nexus' do
     describe 'admin user should have its password updated' do
       describe file('/srv/sonatype-work/nexus/conf/security.xml') do
         it { should be_file }
-        its(:content) { should_not include '<password>$shiro1$SHA-512$1024$YqRBSFRnZDcVwUUag81I1Q==$Wzce7Ab03rDz3/ThvMzzx39lntW/+Ds2h1PioyC9FQ/rspeFwPu57kYD2jw2qFlMq8GhOps0K29ZCA72a+eJ+g==</password>' } # randompassword hash string
+        its(:content) { should_not include '<password>$shiro1$SHA-512$1024$G+rxqm4Qw5/J54twR6BrSQ==$2ZUS4aBHbGGZkNzLugcQqhea7uPOXhoY4kugop4r4oSAYlJTyJ9RyZYLuFBmNzDr16Ii1Q+O6Mn1QpyBA1QphA==</password>' } # default password hash string
       end
     end
 
-    describe command('/usr/bin/curl -v -f -X GET -u admin:randompassword http://localhost:8081/nexus/service/local/users/admin') do
+    describe command('/usr/bin/curl -v -f -X GET -u admin:randompassword http://localhost:8081/nexus/service/local/users/admin 2>&1') do
       its(:exit_status) { should eq 0 }
       its(:stdout) { should include 'HTTP/1.1 200 OK' }
       its(:stdout) { should include '<userId>admin</userId>' }
