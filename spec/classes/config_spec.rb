@@ -1,4 +1,4 @@
-require 'puppetlabs_spec_helper/module_spec_helper'
+require 'spec_helper'
 
 describe 'nexus::config' do
   let(:params) {
@@ -38,6 +38,9 @@ describe 'nexus::config' do
       'match' => '^nexus-work',
       'line'  => 'nexus-work=/foom',
     ) }
+
+    it { should contain_ini_setting('java_initmemory') }
+    it { should contain_ini_setting('java_maxmemory') }
   end
 end
 

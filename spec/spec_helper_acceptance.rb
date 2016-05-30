@@ -1,5 +1,9 @@
 require 'beaker-rspec'
 
+# Load shared acceptance examples
+base_spec_dir = Pathname.new(File.join(File.dirname(__FILE__), 'acceptance'))
+Dir[base_spec_dir.join('shared/**/*.rb')].sort.each{ |f| require f }
+
 # Install Puppet
 unless ENV['RS_PROVISION'] == 'no'
   # This will install the latest available package on el and deb based
@@ -31,6 +35,7 @@ RSpec.configure do |c|
       shell('puppet module install puppetlabs-stdlib', { :acceptable_exit_codes => [0,1] })
       shell('puppet module install puppetlabs-java', { :acceptable_exit_codes => [0,1] })
       shell('puppet module install maestrodev-wget', { :acceptable_exit_codes => [0,1] })
+      shell('puppet module install puppetlabs-inifile', { :acceptable_exit_codes => [0,1] })
     end
   end
 end

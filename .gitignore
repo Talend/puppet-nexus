@@ -1,8 +1,8 @@
 *.swp
 .ruby-version
 .ruby-gemset
-Gemfile.lock
 pkg
 spec/fixtures/
 .vagrant/
 log/
+.rspec-local

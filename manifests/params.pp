@@ -42,6 +42,6 @@ class nexus::params {
   $java_maxmemory                = 256
   $install_java                  = true
   $admin_password_crypt          = '$shiro1$SHA-512$1024$G+rxqm4Qw5/J54twR6BrSQ==$2ZUS4aBHbGGZkNzLugcQqhea7uPOXhoY4kugop4r4oSAYlJTyJ9RyZYLuFBmNzDr16Ii1Q+O6Mn1QpyBA1QphA=='
-  $enable_anonymous              = false
+  $enable_anonymous_access       = false
   $initialize_passwords          = true
 }
