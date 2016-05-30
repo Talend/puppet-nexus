@@ -29,7 +29,7 @@ class nexus::config(
   $java_initmemory         = $::nexus::java_initmemory,
   $java_maxmemory          = $::nexus::java_maxmemory,
   $install_java            = $::nexus::install_java,
-  $admin_password_crypt    = $::nexus::admin_password_crypt,
+  $admin_password          = $::nexus::admin_password,
   $enable_anonymous_access = $::nexus::enable_anonymous_access,
   $initialize_passwords    = $::nexus::initialize_passwords,
 
