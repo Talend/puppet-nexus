@@ -7,11 +7,8 @@
 # [*nexus_root*]
 #   Nexus root folder
 #
-# [*admin_password_crypt*]
-#   Admin password hash string string
-#   See:
-#    * https://support.sonatype.com/hc/en-us/articles/213465508-How-can-I-reset-a-forgotten-admin-password-
-#    * http://shiro.apache.org/command-line-hasher.html
+# [*admin_password*]
+#   Admin password
 #
 # [*enable_anonymous_access*]
 #   If set to true, then anonymous access will be enabled
@@ -23,7 +20,7 @@
 #
 # class { 'nexus::postconfig':
 #   nexus_root              => '/opt',
-#   admin_password_crypt    => '$shiro1$SHA-512$1024$G+rxqm4Qw5/J54twR6BrSQ==$2ZUS4aBHbGGZkNzLugcQqhea7uPOXhoY4kugop4r4oSAYlJTyJ9RyZYLuFBmNzDr16Ii1Q+O6Mn1QpyBA1QphA==',
+#   admin_password          => 'ilikerandompasswords',
 #   enable_anonymous_access => false,
 #   initialize_passwords    => true
 # }
@@ -39,14 +36,14 @@
 class nexus::postconfig(
 
   $nexus_root              = $nexus::nexus_root,
-  $admin_password_crypt    = $nexus::admin_password_crypt,
+  $admin_password          = $nexus::admin_password,
   $enable_anonymous_access = $nexus::enable_anonymous_access,
   $initialize_passwords    = $nexus::initialize_passwords,
 
 ) {
 
   validate_string($nexus_root)
-  validate_string($admin_password_crypt)
+  validate_string($admin_password)
   validate_bool($enable_anonymous_access)
   validate_bool($initialize_passwords)
 
@@ -74,7 +71,7 @@ class nexus::postconfig(
     }
 
     exec { 'update password for the admin user':
-      command => "/usr/bin/curl -X POST -u admin:admin123 http://localhost:8081/nexus/service/local/users_setpw -H 'Content-type: application/xml' -d '<user-changepw><data><oldPassword>admin123</oldPassword><userId>admin</userId><newPassword>${admin_password_crypt}</newPassword></data></user-changepw>'",
+      command => "/usr/bin/curl -X POST -u admin:admin123 http://localhost:8081/nexus/service/local/users_setpw -H 'Content-type: application/xml' -d '<user-changepw><data><oldPassword>admin123</oldPassword><userId>admin</userId><newPassword>${admin_password}</newPassword></data></user-changepw>'",
       onlyif  => '/usr/bin/curl -s -f -X GET -u admin:admin123 http://localhost:8081/nexus/service/local/users/admin',
     }
   }

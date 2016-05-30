@@ -4,7 +4,7 @@ describe 'nexus::postconfig' do
   let(:default_parameters) {
     {
       'nexus_root'              => '/nexus/root',
-      'admin_password_crypt'    => 'some_crypt',
+      'admin_password'          => 'some_password',
       'enable_anonymous_access' => false,
       'initialize_passwords'    => true
     }

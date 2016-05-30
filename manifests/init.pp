@@ -49,7 +49,7 @@ class nexus (
   $java_initmemory         = $nexus::params::java_initmemory,
   $java_maxmemory          = $nexus::params::java_maxmemory,
   $install_java            = $nexus::params::install_java,
-  $admin_password_crypt    = $nexus::params::admin_password_crypt,
+  $admin_password          = $nexus::params::admin_password,
   $enable_anonymous_access = $nexus::params::enable_anonymous_access,
   $initialize_passwords    = $nexus::params::initialize_passwords,
 
@@ -144,7 +144,7 @@ class nexus (
 
   class { 'nexus::postconfig':
     nexus_root              => $nexus_root,
-    admin_password_crypt    => $admin_password_crypt,
+    admin_password          => $admin_password,
     enable_anonymous_access => $enable_anonymous_access,
     initialize_passwords    => $initialize_passwords
   }
