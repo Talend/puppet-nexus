@@ -59,13 +59,12 @@ describe 'nexus' do
         it { should be_file }
         its(:content) { should_not include '<password>$shiro1$SHA-512$1024$YqRBSFRnZDcVwUUag81I1Q==$Wzce7Ab03rDz3/ThvMzzx39lntW/+Ds2h1PioyC9FQ/rspeFwPu57kYD2jw2qFlMq8GhOps0K29ZCA72a+eJ+g==</password>' } # randompassword hash string
       end
+    end
 
-      describe command('/usr/bin/curl -v -f -X GET -u admin:randompassword http://localhost:8081/nexus/service/local/users/admin') do
-        its(:exit_status) { should eq 0 }
-        its(:stdout) { should include 'HTTP/1.1 200 OK' }
-        its(:stdout) { should include '<userId>admin</userId>' }
-      end
+    describe command('/usr/bin/curl -v -f -X GET -u admin:randompassword http://localhost:8081/nexus/service/local/users/admin') do
+      its(:exit_status) { should eq 0 }
+      its(:stdout) { should include 'HTTP/1.1 200 OK' }
+      its(:stdout) { should include '<userId>admin</userId>' }
     end
   end
-
 end
