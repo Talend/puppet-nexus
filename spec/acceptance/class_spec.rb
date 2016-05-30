@@ -32,9 +32,9 @@ describe 'nexus' do
     end
   end
 
-  context 'with download_folder parameter set to /var/tmp' do
+  context 'when download_folder parameter set to /var/tmp' do
     it_should_behave_like 'nexus::installed', "
-      version          => '2.8.0',
+      version         => '2.8.0',
       revision        =>  '05',
       download_folder =>  '/var/tmp/'
     "
@@ -42,6 +42,23 @@ describe 'nexus' do
 
     describe file('/var/tmp/nexus-2.8.0-05-bundle.tar.gz') do
       it { should be_file }
+    end
+  end
+
+  context 'when admin_password_crypt parameter set' do
+    it_should_behave_like 'nexus::installed', "
+      version              => '2.8.0',
+      revision             =>  '05',
+      initialize_passwords =>  true,
+      admin_password_crypt =>  'the_crypt'
+    "
+    it_should_behave_like 'nexus::running'
+
+    describe 'admin user should have its password updated' do
+      describe file('/srv/sonatype-work/nexus/conf/security.xml') do
+        it { should be_file }
+        its(:content) { should_not include '<password>the_crypt</password>' }
+      end
     end
   end
 
