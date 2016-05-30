@@ -14,8 +14,10 @@
 #    * http://shiro.apache.org/command-line-hasher.html
 #
 # [*enable_anonymous_access*]
+#   If set to true, then anonymous access will be enabled
 #
 # [*initialize_passwords*]
+#   If set to true, then password for the admin user will be updated and the deployment user will be removed
 #
 # === Examples
 #
