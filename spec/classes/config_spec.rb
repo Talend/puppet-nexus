@@ -38,6 +38,9 @@ describe 'nexus::config' do
       'match' => '^nexus-work',
       'line'  => 'nexus-work=/foom',
     ) }
+
+    it { should contain_ini_setting('java_initmemory') }
+    it { should contain_ini_setting('java_maxmemory') }
   end
 end
 
