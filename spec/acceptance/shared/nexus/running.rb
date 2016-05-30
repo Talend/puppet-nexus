@@ -12,12 +12,12 @@ shared_examples 'nexus::running' do
   end
 
   context 'Nexus should be running on the default port' do
-    describe port(8081) do
-      it { should be_listening }
+    describe command('wget -O - http://localhost:8081/nexus/') do
+      its(:stdout) { should match /Sonatype Nexus&trade; 2.8.0-05/ }
     end
 
-    describe command('curl --max-time 30 0.0.0.0:8081/nexus/') do
-      its(:stdout) { should match /Sonatype Nexus&trade; 2.8.0-05/ }
+    describe port(8081) do
+      it { should be_listening }
     end
   end
 
