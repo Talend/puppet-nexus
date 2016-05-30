@@ -31,7 +31,7 @@ class nexus::started (
   validate_string($nexus_host)
   validate_integer($nexus_port)
 
-  exec { 'Waiting for the Nexus to start':
+  exec { 'waiting for Nexus to start':
     command => "/usr/bin/wget --spider --tries 15 --retry-connrefused http://${nexus_host}:${nexus_port}/nexus/"
   }
 
