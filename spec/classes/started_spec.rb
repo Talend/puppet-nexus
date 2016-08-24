@@ -12,7 +12,7 @@ describe 'nexus::started' do
     let(:params) { default_parameters }
 
     it { should contain_exec('waiting for Nexus to start').with(
-      'command' => "/usr/bin/wget --spider --tries 15 --retry-connrefused http://nexus_host:9999/nexus/"
+      'command' => "/usr/bin/wget --spider --tries 50 --retry-connrefused http://nexus_host:9999/nexus/"
     ) }
   end
 end
