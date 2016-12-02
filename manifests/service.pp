@@ -34,9 +34,13 @@
 # Copyright 2013 Hubspot
 #
 class nexus::service (
+
   $nexus_home = $::nexus::nexus_home,
   $nexus_user = $::nexus::nexus_user,
-  $version = $::nexus::version,
+  $version    = $::nexus::version,
+  $ensure     = $::nexus::service_ensure,
+  $enable     = $::nexus::service_enable,
+
 ) {
   $nexus_script = "${nexus_home}/bin/nexus"
 
@@ -70,8 +74,8 @@ class nexus::service (
   }
 
   service{ 'nexus':
-    ensure  => running,
-    enable  => true,
+    ensure  => $ensure,
+    enable  => $enable,
     status  => $status_line,
     require => [File['/etc/init.d/nexus'],
                 File_line['nexus_NEXUS_HOME'],

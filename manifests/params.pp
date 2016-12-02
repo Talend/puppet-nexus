@@ -20,6 +20,7 @@
 # Copyright 2013 Hubspot
 #
 class nexus::params {
+
   # See nexus::package on why this won't increment the package version.
   $version                       = 'latest'
   $revision                      = '01'
@@ -44,4 +45,7 @@ class nexus::params {
   $admin_password                = 'admin123'
   $enable_anonymous_access       = false
   $initialize_passwords          = true
+  $service_ensure                = 'running',
+  $service_enable                = true,
+
 }
