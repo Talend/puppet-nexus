@@ -22,29 +22,29 @@
 class nexus::params {
 
   # See nexus::package on why this won't increment the package version.
-  $version                       = 'latest'
-  $revision                      = '01'
-  $deploy_pro                    = false
-  $download_site                 = 'http://download.sonatype.com/nexus/oss'
-  $nexus_root                    = '/srv'
-  $nexus_home_dir                = 'nexus'
-  $nexus_work_recurse            = true
-  $nexus_work_dir_manage         = true
-  $nexus_selinux_ignore_defaults = true
-  $nexus_user                    = 'nexus'
-  $nexus_group                   = 'nexus'
-  $nexus_host                    = '0.0.0.0'
-  $nexus_port                    = '8081'
-  $nexus_context                 = '/nexus'
-  $nexus_manage_user             = true
-  $pro_download_site             = 'http://download.sonatype.com/nexus/professional-bundle'
-  $download_folder               = '/srv'
-  $java_initmemory               = 128
-  $java_maxmemory                = 256
-  $install_java                  = true
-  $admin_password                = 'admin123'
-  $enable_anonymous_access       = false
-  $initialize_passwords          = true
+  $version                       = 'latest',
+  $revision                      = '01',
+  $deploy_pro                    = false,
+  $download_site                 = 'http://download.sonatype.com/nexus/oss',
+  $nexus_root                    = '/srv',
+  $nexus_home_dir                = 'nexus',
+  $nexus_work_recurse            = true,
+  $nexus_work_dir_manage         = true,
+  $nexus_selinux_ignore_defaults = true,
+  $nexus_user                    = 'nexus',
+  $nexus_group                   = 'nexus',
+  $nexus_host                    = '0.0.0.0',
+  $nexus_port                    = '8081',
+  $nexus_context                 = '/nexus',
+  $nexus_manage_user             = true,
+  $pro_download_site             = 'http://download.sonatype.com/nexus/professional-bundle',
+  $download_folder               = '/srv',
+  $java_initmemory               = 128,
+  $java_maxmemory                = 256,
+  $install_java                  = true,
+  $admin_password                = 'admin123',
+  $enable_anonymous_access       = false,
+  $initialize_passwords          = true,
   $service_ensure                = 'running',
   $service_enable                = true,
 
