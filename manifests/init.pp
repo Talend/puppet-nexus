@@ -140,23 +140,25 @@ class nexus (
     version    => $version,
   }
 
-  class { 'nexus::started':
-    nexus_host => $nexus_host,
-    nexus_port => $nexus_port
-  }
+  if $service_ensure == 'running' {
+    class { 'nexus::started':
+      nexus_host => $nexus_host,
+      nexus_port => $nexus_port,
+      require    => Class['nexus::service']
+    }
 
-  class { 'nexus::postconfig':
-    nexus_root              => $nexus_root,
-    admin_password          => $admin_password,
-    enable_anonymous_access => $enable_anonymous_access,
-    initialize_passwords    => $initialize_passwords
+    class { 'nexus::postconfig':
+      nexus_root              => $nexus_root,
+      admin_password          => $admin_password,
+      enable_anonymous_access => $enable_anonymous_access,
+      initialize_passwords    => $initialize_passwords
+      require                 => Class['nexus::started']
+    }
   }
 
   Anchor['nexus::begin'] ->
     Class['nexus::package'] ->
     Class['nexus::config'] ->
     Class['nexus::service'] ->
-    Class['nexus::started'] ->
-    Class['nexus::postconfig'] ->
   Anchor['nexus::end']
 }
