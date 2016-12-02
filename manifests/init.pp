@@ -151,7 +151,7 @@ class nexus (
       nexus_root              => $nexus_root,
       admin_password          => $admin_password,
       enable_anonymous_access => $enable_anonymous_access,
-      initialize_passwords    => $initialize_passwords
+      initialize_passwords    => $initialize_passwords,
       require                 => Class['nexus::started']
     }
   }
