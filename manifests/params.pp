@@ -45,6 +45,7 @@ class nexus::params {
   $admin_password                = 'admin123'
   $enable_anonymous_access       = false
   $initialize_passwords          = true
+  $set_user_root                 = false
   $service_ensure                = 'running'
   $service_enable                = true
 

@@ -32,7 +32,7 @@ class nexus::config(
   $admin_password          = $::nexus::admin_password,
   $enable_anonymous_access = $::nexus::enable_anonymous_access,
   $initialize_passwords    = $::nexus::initialize_passwords,
-
+  $set_user_root           = $::nexus::set_user_root,
 
 ) {
 
@@ -65,6 +65,16 @@ class nexus::config(
   }
 
 
+  if $set_user_root {
+    ini_setting { 'set_user_root':
+        ensure  => present,
+        path    => "${nexus_root}/nexus/bin/jsw/conf/wrapper.conf",
+        section => '',
+        setting => 'wrapper.java.additional.3',
+        value   => "-Djava.util.prefs.userRoot=${nexus_root}/${nexus_home_dir}",
+        notify  => Service['nexus'];
+    }
+  }
 
   file_line{ 'nexus-application-host':
     path  => $nexus_properties_file,

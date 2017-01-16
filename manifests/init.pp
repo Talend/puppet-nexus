@@ -53,6 +53,7 @@ class nexus (
   $admin_password          = $nexus::params::admin_password,
   $enable_anonymous_access = $nexus::params::enable_anonymous_access,
   $initialize_passwords    = $nexus::params::initialize_passwords,
+  $set_user_root           = $nexus::params::set_user_root,
   $service_ensure          = $nexus::params::service_ensure,
   $service_enable          = $nexus::params::service_enable,
 
