@@ -81,26 +81,19 @@ class nexus::package (
   # NOTE: $nexus_work_dir in later releases was moved to a directory not
   # under the application.  This is why we do not make recursing optional
   # for this resource but do for $nexus_work_dir.
-  file{ $nexus_home_real:
-    ensure                  => directory,
-    owner                   => $nexus_user,
-    group                   => $nexus_group,
-    recurse                 => true,
-    selinux_ignore_defaults => $nexus_selinux_ignore_defaults,
-    require                 => Exec[ 'nexus-untar']
+  exec { "Nexus chown ${nexus_home_real}":
+    command  => "/bin/chown -R ${nexus_user}:${nexus_group} ${nexus_home_real}",
+    require  => Exec[ 'nexus-untar']
+    unless   => "/bin/ls -ld ${nexus_home_real} | /bin/grep '${nexus_user} ${nexus_group}'",
   }
-
 
   # I have an EBS volume for $nexus_work_dir and mounting code in our tree
   # creates this and results in a duplicate resource. -tmclaughlin
   if $nexus_work_dir_manage == true {
-    file{ $nexus_work_dir:
-      ensure                  => directory,
-      owner                   => $nexus_user,
-      group                   => $nexus_group,
-      recurse                 => $nexus_work_recurse,
-      selinux_ignore_defaults => $nexus_selinux_ignore_defaults,
-      require                 => Exec[ 'nexus-untar']
+    exec { "Nexus chown ${nexus_work_dir}":
+      command  => "/bin/chown -R ${nexus_user}:${nexus_group} ${nexus_work_dir}",
+      require  => Exec[ 'nexus-untar']
+      unless   => "/bin/ls -ld ${nexus_work_dir} | /bin/grep '${nexus_user} ${nexus_group}'",
     }
   }
 
