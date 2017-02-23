@@ -84,7 +84,7 @@ class nexus::package (
   exec { "Nexus chown ${nexus_home_real}":
     command  => "/bin/chown -R ${nexus_user}:${nexus_group} ${nexus_home_real}",
     require  => Exec[ 'nexus-untar'],
-    unless   => "/bin/ls -ld ${nexus_home_real} | /bin/grep '${nexus_user} ${nexus_group}'",
+    unless   => "/usr/bin/find ${nexus_home_real} -not -user ${nexus_user} -or -not -group ${nexus_group} | /usr/bin/head -n 1 | /usr/bin/wc -l | /usr/bin/grep -q '^0$'",
   }
 
   # I have an EBS volume for $nexus_work_dir and mounting code in our tree
@@ -93,7 +93,7 @@ class nexus::package (
     exec { "Nexus chown ${nexus_work_dir}":
       command  => "/bin/chown -R ${nexus_user}:${nexus_group} ${nexus_work_dir}",
       require  => Exec[ 'nexus-untar'],
-      unless   => "/bin/ls -ld ${nexus_work_dir} | /bin/grep '${nexus_user} ${nexus_group}'",
+      unless   => "/usr/bin/find ${nexus_work_dir} -not -user ${nexus_user} -or -not -group ${nexus_group} | /usr/bin/head -n 1 | /usr/bin/wc -l | /usr/bin/grep -q '^0$'",
     }
   }
 
