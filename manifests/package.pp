@@ -84,7 +84,7 @@ class nexus::package (
   exec { "Nexus chown ${nexus_home_real}":
     command  => "/bin/chown -R ${nexus_user}:${nexus_group} ${nexus_home_real}",
     require  => Exec[ 'nexus-untar']
-		unless   => "/bin/ls -ld ${nexus_home_real} | /bin/grep '${nexus_user} ${nexus_group}'",
+    unless   => "/bin/ls -ld ${nexus_home_real} | /bin/grep '${nexus_user} ${nexus_group}'",
   }
 
   # I have an EBS volume for $nexus_work_dir and mounting code in our tree
