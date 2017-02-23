@@ -83,7 +83,7 @@ class nexus::package (
   # for this resource but do for $nexus_work_dir.
   exec { "Nexus chown ${nexus_home_real}":
     command  => "/bin/chown -R ${nexus_user}:${nexus_group} ${nexus_home_real}",
-    require  => Exec[ 'nexus-untar']
+    require  => Exec[ 'nexus-untar'],
     unless   => "/bin/ls -ld ${nexus_home_real} | /bin/grep '${nexus_user} ${nexus_group}'",
   }
 
@@ -92,7 +92,7 @@ class nexus::package (
   if $nexus_work_dir_manage == true {
     exec { "Nexus chown ${nexus_work_dir}":
       command  => "/bin/chown -R ${nexus_user}:${nexus_group} ${nexus_work_dir}",
-      require  => Exec[ 'nexus-untar']
+      require  => Exec[ 'nexus-untar'],
       unless   => "/bin/ls -ld ${nexus_work_dir} | /bin/grep '${nexus_user} ${nexus_group}'",
     }
   }
