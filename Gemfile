@@ -23,6 +23,7 @@ end
 
 group :development do
   gem 'i18n', '0.6.11'
+  gem 'minitest', '~> 4.7.5'
   gem 'travis'
   gem 'travis-lint'
   gem 'puppet-blacksmith'
