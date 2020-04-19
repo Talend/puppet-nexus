@@ -32,6 +32,7 @@ group :development do
 end
 
 group :system_tests do
+  gem 'dry-inflector', '~> 0.1.1'
   gem 'beaker'
   gem 'beaker-rspec'
   gem 'vagrant-wrapper'
