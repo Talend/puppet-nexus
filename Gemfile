@@ -12,7 +12,7 @@ group :test do
     gem 'rspec', '~> 2.0'
   end
 
-  gem 'rake'
+  gem 'rake', '~> 12.3', '>= 12.3.3'
   gem 'puppet-lint'
   gem 'rspec-puppet', :git => 'https://github.com/rodjek/rspec-puppet.git'
   gem 'puppet-syntax'
