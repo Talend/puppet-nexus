@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-gem 'lumberjack', '~> 1.0', '>= 1.0.9'
+gem 'lumberjack', '~> 1.0'
 
 group :test do
   if puppetversion = ENV['PUPPET_GEM_VERSION']
