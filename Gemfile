@@ -16,6 +16,7 @@ group :test do
   gem 'puppet-lint'
   gem 'puppet-syntax'
   gem 'puppetlabs_spec_helper'
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'simplecov'
   gem 'metadata-json-lint'
 end
