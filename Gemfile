@@ -26,7 +26,6 @@ group :development do
   gem 'travis'
   gem 'travis-lint'
   gem 'puppet-blacksmith'
-  gem 'lumberjack', :git => 'https://github.com/bdurand/lumberjack_syslog_device.git'
   gem 'guard-rake'
   gem 'guard', '~> 2.6', '>= 2.6.1'
   gem 'listen', '~> 3.0.0'
