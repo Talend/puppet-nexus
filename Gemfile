@@ -28,7 +28,7 @@ group :development do
   gem 'travis-lint'
   gem 'puppet-blacksmith'  
   gem 'guard-rake'
-  gem 'lumberjack', :git => 'https://github.com/bdurand/lumberjack.git'
+  gem 'guard', :git => 'https://github.com/guard/guard.git'
   gem 'listen', '~> 3.0.0'
 end
 
