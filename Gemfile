@@ -23,7 +23,6 @@ end
 
 group :development do
   gem 'i18n', '0.6.11'
-  gem 'lumberjack', '~> 1.0', '>= 1.0.9'
   gem 'minitest', '~> 4.7.5'
   gem 'travis'
   gem 'travis-lint'
@@ -38,6 +37,7 @@ group :system_tests do
   gem 'signet', '~> 0.9.2'
   gem 'rb-inotify', '~> 0.9.9'  
   gem 'beaker'
+  gem 'lumberjack', '~> 1.0', '>= 1.0.9'
   gem 'beaker-rspec'
   gem 'vagrant-wrapper'
 end
