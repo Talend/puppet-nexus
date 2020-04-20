@@ -34,6 +34,7 @@ end
 group :system_tests do
   gem 'dry-inflector', '~> 0.1.1'
   gem 'jwt', '~> 1.5', '>= 1.5.5'
+  gem 'signet', '~> 0.9.2'
   gem 'beaker'
   gem 'beaker-rspec'
   gem 'vagrant-wrapper'
