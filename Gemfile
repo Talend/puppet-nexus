@@ -14,7 +14,7 @@ group :test do
 
   gem 'rake', '~> 12.3', '>= 12.3.3'
   gem 'puppet-lint'
-  gem 'rspec-puppet', :git => 'https://github.com/rodjek/rspec-puppet.git'
+  gem 'guard', '~> 2.6', '>= 2.6.1'
   gem 'puppet-syntax'
   gem 'puppetlabs_spec_helper'
   gem 'simplecov'
