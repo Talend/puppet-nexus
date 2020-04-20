@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
-gem 'lumberjack', '~> 1.0'
 
 group :test do
   if puppetversion = ENV['PUPPET_GEM_VERSION']
@@ -29,6 +28,7 @@ group :development do
   gem 'travis-lint'
   gem 'puppet-blacksmith'  
   gem 'guard-rake'
+  gem 'lumberjack', :git => 'https://github.com/bdurand/lumberjack.git'
   gem 'listen', '~> 3.0.0'
 end
 
