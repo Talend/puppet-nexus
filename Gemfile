@@ -28,7 +28,6 @@ group :development do
   gem 'travis-lint'
   gem 'puppet-blacksmith'  
   gem 'guard-rake'
-  gem 'lumberjack', '~> 1.0', '>= 1.0.11'
   gem 'listen', '~> 3.0.0'
 end
 
@@ -40,4 +39,5 @@ group :system_tests do
   gem 'beaker'
   gem 'beaker-rspec'
   gem 'vagrant-wrapper'
+  gem 'lumberjack', '~> 1.0', '>= 1.0.11'
 end
