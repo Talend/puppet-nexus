@@ -13,6 +13,7 @@ group :test do
   end
 
   gem 'rake', '~> 12.3', '>= 12.3.3'
+  gem 'lumberjack', '~> 1.0', '>= 1.0.11'
   gem 'puppet-lint'
   gem 'rspec-puppet', :git => 'https://github.com/rodjek/rspec-puppet.git'
   gem 'puppet-syntax'
@@ -26,8 +27,7 @@ group :development do
   gem 'minitest', '~> 4.7.5'
   gem 'travis'
   gem 'travis-lint'
-  gem 'puppet-blacksmith'
-  gem 'lumberjack', '~> 1.0', '>= 1.0.11'
+  gem 'puppet-blacksmith'  
   gem 'guard-rake'
   gem 'listen', '~> 3.0.0'
 end
