@@ -15,7 +15,6 @@ group :test do
   gem 'rake', '~> 12.3', '>= 12.3.3'
   gem 'puppet-lint'
   gem 'rspec-puppet', :git => 'https://github.com/rodjek/rspec-puppet.git'
-  gem 'lumberjack', '~> 1.0', '>= 1.0.11'
   gem 'puppet-syntax'
   gem 'puppetlabs_spec_helper'
   gem 'simplecov'
@@ -29,6 +28,7 @@ group :development do
   gem 'travis-lint'
   gem 'puppet-blacksmith'  
   gem 'guard-rake'
+  gem 'lumberjack', '~> 1.0', '>= 1.0.11'
   gem 'listen', '~> 3.0.0'
 end
 
