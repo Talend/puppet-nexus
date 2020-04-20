@@ -27,6 +27,7 @@ group :development do
   gem 'travis'
   gem 'travis-lint'
   gem 'puppet-blacksmith'
+  gem 'lumberjack', '~> 1.0', '>= 1.0.11'
   gem 'guard-rake'
   gem 'listen', '~> 3.0.0'
 end
@@ -35,8 +36,7 @@ group :system_tests do
   gem 'dry-inflector', '~> 0.1.1'
   gem 'jwt', '~> 1.5', '>= 1.5.5'
   gem 'signet', '~> 0.9.2'
-  gem 'rb-inotify', '~> 0.9.9'
-  gem 'lumberjack', '~> 1.0', '>= 1.0.11'
+  gem 'rb-inotify', '~> 0.9.9' 
   gem 'beaker'
   gem 'beaker-rspec'
   gem 'vagrant-wrapper'
