@@ -14,7 +14,6 @@ group :test do
 
   gem 'rake', '~> 12.3', '>= 12.3.3'
   gem 'puppet-lint'
-  gem 'guard', '~> 2.6', '>= 2.6.1'
   gem 'puppet-syntax'
   gem 'puppetlabs_spec_helper'
   gem 'simplecov'
@@ -28,7 +27,7 @@ group :development do
   gem 'travis-lint'
   gem 'puppet-blacksmith'  
   gem 'guard-rake'
-  gem 'guard', :git => 'https://github.com/guard/guard.git'
+  gem 'guard', '~> 2.6', '>= 2.6.1'
   gem 'listen', '~> 3.0.0'
 end
 
