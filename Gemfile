@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 group :test do
+  gem 'lumberjack', '~> 1.0', '>= 1.0.9'
   if puppetversion = ENV['PUPPET_GEM_VERSION']
     gem 'puppet', puppetversion, :require => false
   else
@@ -37,7 +38,6 @@ group :system_tests do
   gem 'signet', '~> 0.9.2'
   gem 'rb-inotify', '~> 0.9.9'  
   gem 'beaker'
-  gem 'lumberjack', '~> 1.0', '>= 1.0.9'
   gem 'beaker-rspec'
   gem 'vagrant-wrapper'
 end
