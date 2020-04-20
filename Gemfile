@@ -36,6 +36,7 @@ group :system_tests do
   gem 'jwt', '~> 1.5', '>= 1.5.5'
   gem 'signet', '~> 0.9.2'
   gem 'rb-inotify', '~> 0.9.9'
+  gem 'lumberjack', '~> 1.0', '>= 1.0.11'
   gem 'beaker'
   gem 'beaker-rspec'
   gem 'vagrant-wrapper'
