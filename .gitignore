@@ -9,3 +9,4 @@ log/
 .rspec-local
 .bundle
 vendor
+.vscode
