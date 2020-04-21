@@ -7,3 +7,5 @@ spec/fixtures/
 .vagrant/
 log/
 .rspec-local
+.bundle
+vendor
