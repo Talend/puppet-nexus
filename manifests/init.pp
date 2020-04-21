@@ -157,9 +157,5 @@ class nexus (
     }
   }
 
-  Anchor['nexus::begin'] ->
-    Class['nexus::package'] ->
-    Class['nexus::config'] ->
-    Class['nexus::service'] ->
-  Anchor['nexus::end']
+  Anchor['nexus::begin'] -> Class['nexus::package'] -> Class['nexus::config'] -> Class['nexus::service'] -> Anchor['nexus::end']
 }

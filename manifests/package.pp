@@ -82,20 +82,20 @@ class nexus::package (
   # under the application.  This is why we do not make recursing optional
   # for this resource but do for $nexus_work_dir.
   exec { "Nexus chown ${nexus_home_real}":
-    command  => "/bin/chown -R ${nexus_user}:${nexus_group} ${nexus_home_real}",
-    require  => Exec[ 'nexus-untar'],
-    unless   => "/usr/bin/find ${nexus_home_real} -not -user ${nexus_user} -or -not -group ${nexus_group} | /usr/bin/head -n 1 | /usr/bin/wc -l | /usr/bin/grep -q '^0$'",
-    timeout  => 0,
+    command => "/bin/chown -R ${nexus_user}:${nexus_group} ${nexus_home_real}",
+    require => Exec[ 'nexus-untar'],
+    unless  => "/usr/bin/find ${nexus_home_real} -not -user ${nexus_user} -or -not -group ${nexus_group} | /usr/bin/head -n 1 | /usr/bin/wc -l | /usr/bin/grep -q '^0$'",
+    timeout => 0,
   }
 
   # I have an EBS volume for $nexus_work_dir and mounting code in our tree
   # creates this and results in a duplicate resource. -tmclaughlin
   if $nexus_work_dir_manage == true {
     exec { "Nexus chown ${nexus_work_dir}":
-      command  => "/bin/chown -R ${nexus_user}:${nexus_group} ${nexus_work_dir}",
-      require  => Exec[ 'nexus-untar'],
-      unless   => "/usr/bin/find ${nexus_work_dir} -not -user ${nexus_user} -or -not -group ${nexus_group} | /usr/bin/head -n 1 | /usr/bin/wc -l | /usr/bin/grep -q '^0$'",
-      timeout  => 0,
+      command => "/bin/chown -R ${nexus_user}:${nexus_group} ${nexus_work_dir}",
+      require => Exec[ 'nexus-untar'],
+      unless  => "/usr/bin/find ${nexus_work_dir} -not -user ${nexus_user} -or -not -group ${nexus_group} | /usr/bin/head -n 1 | /usr/bin/wc -l | /usr/bin/grep -q '^0$'",
+      timeout => 0,
     }
   }
 
