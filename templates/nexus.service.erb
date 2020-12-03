@@ -5,7 +5,8 @@ Description=Sonatype Nexus
 Type=forking
 User=nexus
 Group=nexus
-LimitNOFILE=65536
+LimitNOFILE=256000
+LimitNPROC=256000
 PIDFile=<%= @nexus_root %>/nexus/bin/jsw/linux-x86-64/nexus.pid
 ExecStart=<%= @nexus_root %>/nexus/bin/nexus start
 ExecReload=<%= @nexus_root %>/nexus/bin/nexus restart
