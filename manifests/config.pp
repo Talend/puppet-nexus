@@ -56,11 +56,18 @@ class nexus::config(
       notify  => Service['nexus'];
 
     'java_maxmemory':
-      ensure  => present,
+      ensure  => absent,
       path    => "${nexus_root}/nexus/bin/jsw/conf/wrapper.conf",
       section => '',
       setting => 'wrapper.java.maxmemory',
-      value   => $java_maxmemory,
+      notify  => Service['nexus'];
+
+    'java_xmx':
+      ensure  => present,
+      path    => "${nexus_root}/nexus/bin/jsw/conf/wrapper.conf",
+      section => '',
+      setting => 'wrapper.java.additional.5',
+      value   => "-Xmx${java_maxmemory}m",
       notify  => Service['nexus'];
   }
 
